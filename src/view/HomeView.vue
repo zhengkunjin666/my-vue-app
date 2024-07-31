@@ -11,10 +11,9 @@
   </template>
    
   <script setup lang="ts">
-  import { useRouter, useRoute } from 'vue-router'
+  import { useRouter } from 'vue-router'
    
   const router = useRouter()
-  const route = useRoute()
    
   function toAboutPage() {
     router.push({
