@@ -8,6 +8,3 @@ const app = createApp(App)
 app.use(router)
  
 app.mount('#app')
-
-// SecretId:AKIDEjDuZAkIpKoFbtCYp7OdpGueO9yu07Mq
-// SecretKey:ZND8FZIQvko09KVA0z07DKKlcg6b8qbl
