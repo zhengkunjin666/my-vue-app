@@ -211,7 +211,7 @@ const handleToPlay = (item: any) => {
             }
             &:hover {
                 i {
-                    background: url('https://yingshi-stream.2345cdn.net/dypcimg/images/v4/v_playBtn.png')
+                    background: url('@/assets/image/play-btn.png')
                         center center no-repeat;
                 }
                 .el-image {
