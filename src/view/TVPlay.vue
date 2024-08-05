@@ -48,7 +48,7 @@
             </div>
         </el-scrollbar>
     </div>
-    <div class="to-top" @click="handleScrollTop">
+    <div class="to-top" @click="handleScrollTop" v-show="data.scrollTopValue > 600">
         <el-icon><IEpTop /></el-icon>
     </div>
 </template>

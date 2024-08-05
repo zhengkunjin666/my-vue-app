@@ -4,6 +4,7 @@
             class="z-width-fill z-height-fill"
             :src="data.src"
             frameborder="0"
+            allowfullscreen="true"
         ></iframe>
     </div>
 </template>
@@ -15,7 +16,7 @@ const data = reactive({
 onMounted(() => {
     const params = JSON.parse(window.history.state.params)
     data.src = 'https://jx.xmflv.com/?url=' + params.playUrl
-    // https://jx.xmflv.com/?url=
+    document.title = params.title
 })
 </script>
 
