@@ -1,0 +1,109 @@
+/* ==================
+       颜色
+ ==================== */
+ 
+/* 字体颜色 */
+.z-text-red{
+	color: #e54d42;
+} 
+.z-text-black{
+	color: #333333;
+}
+.z-text-white{
+	color: #ffffff;
+}
+.z-text-gray{
+	color: #aaaaaa;
+}
+.z-text-blue{
+	color: #1D5BD2;
+}
+.z-text-orange{
+	color: #ffaa00;
+}
+.z-text-green{
+	color: #67c23a;
+}
+/* 中性色。中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构 */
+//主要文字
+
+//常规文字
+
+//次要文字
+ 
+ 
+ 
+ 
+/* 背景色 */
+.z-bg-black {
+	background-color: #333333;
+	color: #ffffff;
+}
+.z-bg-white {
+	background-color: #ffffff;
+	color: #666666;
+}
+.z-bg-red {
+	background-color: #e54d42;
+	color: #ffffff;
+}
+.z-bg-orange {
+	background-color: #f37b1d;
+	color: #ffffff;
+}
+.z-bg-yellow {
+	background-color: #fbbd08;
+	color: #333333;
+}
+.z-bg-olive {
+	background-color: #8dc63f;
+	color: #ffffff;
+}
+.z-bg-green {
+	background-color: #39b54a;
+	color: #ffffff;
+}
+.z-bg-grey {
+	background-color: #8799a3;
+	color: #ffffff;
+}
+.z-bg-gray {
+	background-color: #f0f0f0;
+	color: #333333;
+}
+
+//渐变色
+.z-bg-red {
+	background-image: linear-gradient(45deg, #f43f3b, #ec008c);
+	color: #ffffff;
+}
+
+.z-bg-orange {
+	background-image: linear-gradient(45deg, #ff9700, #ed1c24);
+	color: #ffffff;
+}
+
+.z-bg-green {
+	background-image: linear-gradient(45deg, #39b54a, #8dc63f);
+	color: #ffffff;
+}
+
+.z-bg-purple {
+	background-image: linear-gradient(45deg, #9000ff, #5e00ff);
+	color: #ffffff;
+}
+
+.z-bg-pink {
+	background-image: linear-gradient(45deg, #ec008c, #6739b6);
+	color: #ffffff;
+}
+
+.z-bg-blue {
+	background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
+	color: #ffffff;
+}
+
+//阴影色
+.z-shadow[class*="-gray"] {
+	box-shadow: 6px 6px 8px rgba(114, 130, 138, 0.2);
+}

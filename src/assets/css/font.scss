@@ -1,0 +1,78 @@
+/* ==================
+        字体
+ ==================== */
+ 
+.z-font-xs {
+	font-size: 12px;
+}
+
+.z-font-sm {
+	font-size: 14px;
+}
+
+.z-font-md {
+	font-size: 16px;
+}
+
+.z-font-lg {
+	font-size: 30px;
+}
+
+.z-font-xl {
+	font-size: 34px;
+}
+
+.z-font-bold {
+	font-weight: bold;
+}
+.z-font-bolder {
+	font-weight: bolder;
+}
+.z-font-normal {
+	font-weight: normal;
+}
+
+.z-text-Abc {
+	text-transform: Capitalize;
+}
+.z-text-ABC {
+	text-transform: Uppercase;
+}
+.z-text-abc {
+	text-transform: Lowercase;
+}
+.z-text-underline{
+	text-decoration: underline;
+}
+
+// 定义字体(px)单位
+@for $i from 0 through 80 {
+	.z-font-#{$i} {
+		font-size: $i + px;
+	}
+	.z-f-#{$i} {
+		font-size: $i + px;
+	}
+}
+
+/* start--文本行数限制--start */
+// .z-line-1 {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+// }
+
+@for $i from 0 through 5 {
+	.z-line-#{$i} {
+		-webkit-line-clamp: $i;
+	}
+}
+
+.z-line-1, .z-line-2, .z-line-3, .z-line-4, .z-line-5 {
+    overflow: hidden;
+	word-break: break-all;
+    text-overflow: ellipsis; 
+    display: -webkit-box; // 弹性伸缩盒
+    -webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
+}
+/* end--文本行数限制--end */

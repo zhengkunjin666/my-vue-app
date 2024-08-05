@@ -1,0 +1,142 @@
+/* ==================
+     位置布局样式  flex、relative、absolute、 margin  padding
+ ==================== */
+ 
+//felx布局。 row：主轴   col：交叉轴
+.z-flex {
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.z-flex-ellipsis{
+	overflow: hidden; // 超出的文本隐藏
+	text-overflow: ellipsis; // 溢出用省略号显示
+	white-space: nowrap; // 溢出不换行
+}
+
+.z-flex-col {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.z-flex-wrap {
+	flex-wrap: wrap;
+}
+
+.z-flex-nowrap {
+	flex-wrap: nowrap;
+}
+
+.z-col-center {
+	align-items: center;
+}
+
+.z-col-top {
+	align-items: flex-start;
+}
+
+.z-col-bottom {
+	align-items: flex-end;
+}
+
+.z-row-center {
+	justify-content: center;
+}
+
+.z-row-left {
+	justify-content: flex-start;
+}
+
+.z-row-right {
+	justify-content: flex-end;
+}
+
+.z-row-between {
+	justify-content: space-between;
+}
+
+.z-row-around {
+	justify-content: space-around;
+}
+
+// 定义flex等分
+@for $i from 0 through 12 {
+	.z-flex-#{$i} {
+		flex: $i;
+	}
+}
+.z-flex-none {
+	flex: none;
+}
+.z-relative{
+	position: relative;
+}
+
+.z-absolute{
+	position: absolute;
+}
+
+//文字布局
+.z-text-left {
+	text-align: left;
+}
+
+.z-text-center {
+	text-align: center;
+}
+
+.z-text-right {
+	text-align: right;
+}
+
+// 定义内外边距，历遍1-80
+@for $i from 0 through 80 {
+	// 只要双数和能被5除尽的数
+	@if $i % 2 == 0 or $i % 5 == 0 {
+		// 得出：z-margin-30或者z-m-30
+		.z-margin-#{$i}, .z-m-#{$i} {
+			margin: $i + px;
+		}
+		
+		// 得出：z-padding-30或者z-p-30
+		.z-padding-#{$i}, .z-p-#{$i} {
+			padding: $i + px;
+			box-sizing: border-box;
+		}
+		
+		@each $short, $long in l left, t top, r right, b bottom {
+			// 缩写版，结果如： z-m-l-30
+			// 定义外边距
+			.z-m-#{$short}-#{$i} {
+				margin-#{$long}: $i + px;
+			}
+			
+			// 定义内边距
+			.z-p-#{$short}-#{$i} {
+				padding-#{$long}: $i + px;
+			}
+			
+			// 完整版，结果如：z-margin-left-30
+			// 定义外边距
+			.z-margin-#{$long}-#{$i} {
+				margin-#{$long}: $i + px;
+			}
+			
+			// 定义内边距
+			.z-padding-#{$long}-#{$i} {
+				padding-#{$long}: $i + px;
+			}
+		}
+	}
+}
+
+.z-width-fill{
+   width: 100%;
+}
+.z-height-fill{
+   height: 100%;
+}
