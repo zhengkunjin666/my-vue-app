@@ -1,0 +1,1 @@
+import{d as n,b as a,e,a4 as c,ab as u,o as r}from"./index-CQXH7LQ-.js";const l=e("div",null,"这是test页面",-1),d=n({__name:"TestView",setup(_){const o=c(),t=u();function s(){o.push("/")}return console.log(t),(i,m)=>(r(),a("div",null,[l,e("button",{onClick:s},"跳转至home")]))}});export{d as default};
