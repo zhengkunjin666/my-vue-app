@@ -10,7 +10,7 @@ export default defineConfig(({ mode, command }) => {
     const env = loadEnv(mode, process.cwd())
     return {
         base: './',
-        publicDir: mode === 'production' ? '/my-vue-app/' : '/', // 根据环境变量设置静态资源目录
+        publicDir: mode === 'production' ? '/docs/' : '/', // 根据环境变量设置静态资源目录
         resolve: {
             // https://cn.vitejs.dev/config/#resolve-alias
             alias: {

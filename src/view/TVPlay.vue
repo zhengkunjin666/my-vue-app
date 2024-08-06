@@ -17,11 +17,12 @@
     </div>
     <div
         id="scrollbar"
-        class="z-flex-1 z-m-t-20 z-p-l-20 z-p-r-20 z-p-b-20"
+        class="z-flex-1 z-m-t-20 z-p-b-20"
         style="height: 10%"
     >
         <el-scrollbar
             ref="scrollbarRef"
+            class="z-p-l-20 z-p-r-20"
             :height="data.height"
             always
             @scroll="scroll"
