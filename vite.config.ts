@@ -20,7 +20,7 @@ export default defineConfig(({ mode, command }) => {
             extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
         },
         build: {
-            outDir: 'my-vue-app',//想要把dist修改成什么名字在这边改
+            outDir: 'docs',//想要把dist修改成什么名字在这边改
         },
         plugins: createVitePlugins(command === 'build'),
         // 本地运行配置
