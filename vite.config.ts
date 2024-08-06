@@ -10,7 +10,7 @@ export default defineConfig(({ mode, command }) => {
     const env = loadEnv(mode, process.cwd())
     return {
         base: './',
-        publicDir: mode === 'production' ? '/docs/' : '/', // 根据环境变量设置静态资源目录
+        publicDir: mode === 'production' ? '/my-vue-app/' : '/', // 根据环境变量设置静态资源目录
         resolve: {
             // https://cn.vitejs.dev/config/#resolve-alias
             alias: {
@@ -21,7 +21,7 @@ export default defineConfig(({ mode, command }) => {
             extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
         },
         build: {
-            outDir: 'docs',//想要把dist修改成什么名字在这边改
+            outDir: 'my-vue-app',//想要把dist修改成什么名字在这边改
         },
         plugins: createVitePlugins(command === 'build'),
         // 本地运行配置
