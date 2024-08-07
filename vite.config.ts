@@ -9,7 +9,7 @@ export default defineConfig(({ mode, command }) => {
     // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。不传默认是暴露VITE前缀的
     const env = loadEnv(mode, process.cwd())
     return {
-        base: '/my-vue-app/',
+        base: './',
         resolve: {
             // https://cn.vitejs.dev/config/#resolve-alias
             alias: {

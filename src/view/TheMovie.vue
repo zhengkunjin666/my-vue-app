@@ -48,8 +48,8 @@
                         <div class="z-m-t-10 z-m-b-20">
                             <span
                                 class="z-line-1"
-                                :title="item.title || item.albumInfo.title"
-                                >{{ item.title || item.albumInfo.title }}</span
+                                :title="item.title || item.albumInfo?.title"
+                                >{{ item.title || item.albumInfo?.title }}</span
                             >
                         </div>
                     </div>
@@ -105,7 +105,7 @@ const load = () => {
     }
 }
 const getData = () => {
-    const url = `https://pcw-api.iqiyi.com/search/recommend/list?channel_id=2&data_type=1&mode=24&page_id=${data.pageNum}&ret_num=${data.pageSize}`
+    const url = `https://pcw-api.iqiyi.com/search/recommend/list?channel_id=1&data_type=1&mode=24&page_id=${data.pageNum}&ret_num=${data.pageSize}`
     fetch(url)
         .then((response) => response.json())
         .then((res) => {
