@@ -5,12 +5,11 @@ function setRem() {
     // const scale = document.documentElement.clientWidth / 375
     const width = document.documentElement.clientWidth
     let scale = width / 375
-    if (width > 1000 && width < 1500) {
-        scale = width / 750
-    } else if (width >= 1500) {
-        scale = width / 960
+    if (width > 1000 && width < 1300) {
+        scale = width / 1000
+    } else if (width >= 1300) {
+        scale = width / 1300
     }
-    console.log(width, scale)
     // 设置页面根节点字体大小
     document.documentElement.style.fontSize = baseSize * Math.min(scale, 2) + 'px'
 }
