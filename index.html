@@ -1,13 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/iqiyi.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>爱奇艺视频</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/iqiyi.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>爱奇艺视频</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 </html>
+<script>
+    //移动端添加
+    if (/(pad|pod|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        const head = document.getElementsByTagName('head')
+        const viewport = document.createElement('meta')
+        viewport.name = 'viewport'
+        viewport.content =
+            'target-densitydpi=device-dpi, width=480px, user-scalable=no'
+        head.length > 0 && head[head.length - 1].appendChild(viewport)
+    }
+</script>
