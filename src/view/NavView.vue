@@ -31,11 +31,14 @@
 <script lang="ts" setup>
 const router = useRouter()
 const radio1 = ref('tv-play')
-onMounted(() => {
-    setTimeout(() => {
-        radio1.value = router.currentRoute.value.fullPath.replace('/', '')
-    }, 500)
-})
+
+watch(
+    () => router.currentRoute.value.path,
+    (toPath) => {
+        radio1.value = toPath.replace('/', '')
+    },
+    { immediate: true, deep: true }
+)
 const handleTo = (e: any) => {
     router.push({
         path: e,
