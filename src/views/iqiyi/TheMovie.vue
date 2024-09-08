@@ -42,14 +42,15 @@
                             <el-image
                                 :src="item.imageUrl || item.albumInfo?.img"
                                 referrerpolicy="no-referrer"
+                                lazy
                             />
                             <i></i>
                         </div>
                         <div class="z-m-t-10 z-m-b-20">
                             <span
                                 class="z-line-1"
-                                :title="item.title || item.albumInfo.title"
-                                >{{ item.title || item.albumInfo.title }}</span
+                                :title="item.title || item.albumInfo?.title"
+                                >{{ item.title || item.albumInfo?.title }}</span
                             >
                         </div>
                     </div>
@@ -105,7 +106,7 @@ const load = () => {
     }
 }
 const getData = () => {
-    const url = `https://pcw-api.iqiyi.com/search/recommend/list?channel_id=2&data_type=1&mode=24&page_id=${data.pageNum}&ret_num=${data.pageSize}`
+    const url = `https://pcw-api.iqiyi.com/search/recommend/list?channel_id=1&data_type=1&mode=24&page_id=${data.pageNum}&ret_num=${data.pageSize}`
     fetch(url)
         .then((response) => response.json())
         .then((res) => {
@@ -176,7 +177,7 @@ const getList = (key: string, pageNum: number) => {
                     data.list = data.list.concat(res.data.templates)
                 } else {
                     ElMessage.error({
-                        message: "已经到底，没有数据了！",
+                        message: '已经到底，没有数据了！',
                         offset: 100,
                     })
                 }
@@ -211,7 +212,7 @@ const handleToPlay = (item: any) => {
     const params = JSON.stringify(item)
     router.push({
         name: 'play',
-        state: { params: params },
+        state: { params: params, type: 'iqiyi' },
     })
 }
 </script>

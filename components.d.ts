@@ -12,14 +12,17 @@ declare module 'vue' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElImage: typeof import('element-plus/es')['ElImage']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElOption: typeof import('element-plus/es')['ElOption']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
+    IEpArrowDownBold: typeof import('~icons/ep/arrow-down-bold')['default']
     IEpSearch: typeof import('~icons/ep/search')['default']
     IEpTop: typeof import('~icons/ep/top')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./src/components/global/svg-icon.vue')['default']
   }
   export interface ComponentCustomProperties {
     vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']

@@ -30,13 +30,34 @@ export default defineConfig(({ mode, command }) => {
             cors: true, // 默认启用并允许任何源
             open: true, // 在服务器启动时自动在浏览器中打开应用程序
             proxy: {
-                '/api': {
-                    target: 'https://pbaccess.video.qq.com/', //接口域名
+                // '/api': {
+                //     target: 'https://pbaccess.video.qq.com/', //接口域名
+                //     changeOrigin: true,             //是否跨域
+                //     ws: true,                       //是否代理 websockets
+                //     secure: true,                   //是否https接口
+                //     pathRewrite: {                  //路径重置
+                //         '^/api': ''
+                //     }
+                // },
+                '/x': {
+                    target: 'https://node.video.qq.com/', //接口域名
                     changeOrigin: true,             //是否跨域
-                    ws: true,                       //是否代理 websockets
-                    secure: true,                   //是否https接口
                     pathRewrite: {                  //路径重置
-                        '^/api': ''
+                        '^/x': '/x'
+                    }
+                },
+                '/pgc': {
+                    target: 'https://api.bilibili.com/', //接口域名
+                    changeOrigin: true,             //是否跨域
+                    pathRewrite: {                  //路径重置
+                        '^/pgc': '/pgc'
+                    }
+                },
+                '/search': {
+                    target: 'https://api.bilibili.com/x/web-interface/', //接口域名
+                    changeOrigin: true,             //是否跨域
+                    pathRewrite: {                  //路径重置
+                        '^/search': '/search'
                     }
                 }
             }

@@ -1,7 +1,5 @@
 <template>
-  <NavView />
+    <div id="app">
+        <router-view />
+    </div>
 </template>
-
-<script lang='ts' setup>
-import NavView from "./view/NavView.vue"
-</script>

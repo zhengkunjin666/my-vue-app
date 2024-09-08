@@ -1,6 +1,6 @@
 <template>
     <div class="z-flex-1 z-flex-col" style="height: 10%">
-        <div class="z-m-t-15">
+        <!-- <div class="z-m-t-15">
             <el-form @submit.prevent>
                 <el-input
                     v-model="data.key"
@@ -15,7 +15,7 @@
                     </template>
                 </el-input>
             </el-form>
-        </div>
+        </div> -->
         <div
             id="scrollbar"
             class="z-flex-1 z-m-t-20 z-p-b-20"
@@ -36,21 +36,20 @@
                     <div
                         class="item"
                         v-for="item in data.list"
-                        :key="item.title"
+                        :key="item.params.title"
                     >
                         <div class="image" @click="handleToPlay(item)">
                             <el-image
-                                :src="item.imageUrl || item.albumInfo?.img"
+                                :src="item.params.new_pic_vt"
                                 referrerpolicy="no-referrer"
+                                lazy
                             />
                             <i></i>
                         </div>
                         <div class="z-m-t-10 z-m-b-20">
-                            <span
-                                class="z-line-1"
-                                :title="item.title || item.albumInfo?.title"
-                                >{{ item.title || item.albumInfo?.title }}</span
-                            >
+                            <span class="z-line-1" :title="item.params.title">{{
+                                item.params.title
+                            }}</span>
                         </div>
                     </div>
                 </div>
@@ -105,8 +104,41 @@ const load = () => {
     }
 }
 const getData = () => {
-    const url = `https://pcw-api.iqiyi.com/search/recommend/list?channel_id=1&data_type=1&mode=24&page_id=${data.pageNum}&ret_num=${data.pageSize}`
-    fetch(url)
+    const url =
+        'https://pbaccess.video.qq.com/trpc.vector_layout.page_view.PageService/getPage?video_appid=3000010'
+    const params = {
+        page_context: {
+            page_size: data.pageSize.toString(),
+            page_index: (data.pageNum - 1).toString(),
+        },
+        page_params: {
+            page_id: 'channel_list_second_page',
+            page_type: 'operation',
+            channel_id: '100203',
+            filter_params:
+                'itype=-1&iarea=-1&iyear=-1&ipay=-1&anime_status=-1&item=1&sort=75',
+            page: '0',
+        },
+        page_bypass_params: {
+            params: {
+                caller_id: '3000010',
+                data_mode: 'default',
+                page_id: 'channel_list_second_page',
+                page_type: 'operation',
+                platform_id: '2',
+                user_mode: 'default',
+            },
+            scene: 'operation',
+            abtest_bypass_id: '',
+        },
+    }
+    fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params), // body data type must match "Content-Type" header
+    })
         .then((response) => response.json())
         .then((res) => {
             console.log('Success:', res)
@@ -115,13 +147,11 @@ const getData = () => {
                 handleScrollTop()
             }
             data.isFirst = false
-            res.data.list.forEach((element: any) => {
-                element.imageUrl = element.imageUrl.replace(
-                    '.jpg',
-                    '_579_772.jpg'
-                )
-            })
-            data.list = data.list.concat(res.data.list)
+            const result =
+                data.pageNum === 1
+                    ? res.data.CardList[1].children_list.list.cards
+                    : res.data.CardList[0].children_list.list.cards
+            data.list = data.list.concat(result)
         })
         .catch((error) => {
             console.error('Error:', error)
@@ -176,7 +206,7 @@ const getList = (key: string, pageNum: number) => {
                     data.list = data.list.concat(res.data.templates)
                 } else {
                     ElMessage.error({
-                        message: "已经到底，没有数据了！",
+                        message: '已经到底，没有数据了！',
                         offset: 100,
                     })
                 }
@@ -208,10 +238,28 @@ const handleScrollTop = () => {
 }
 const router = useRouter()
 const handleToPlay = (item: any) => {
-    const params = JSON.stringify(item)
-    router.push({
-        name: 'play',
-        state: { params: params },
-    })
+    const url = `/x/api/float_vinfo2?cid=${item.params.cid}`
+    fetch(url)
+        .then((response) => response.json())
+        .then((res) => {
+            console.log('Success:', res)
+            const vid = res.c.video_ids[0]
+            const param = {
+                title: item.params.title,
+                playUrl: `https://v.qq.com/x/cover/${item.params.cid}/${vid}.html`,
+            }
+            const params = JSON.stringify(param)
+            router.push({
+                name: 'play',
+                state: { params: params, type: 'tencent' },
+            })
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+            ElMessage.error({
+                message: error,
+                offset: 100,
+            })
+        })
 }
 </script>

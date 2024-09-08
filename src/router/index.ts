@@ -6,39 +6,102 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/tv-play',
+            redirect: '/iqiyi',
         },
         {
-            path: '/tv-play',
-            name: 'TVPlay',
-            component: () => import('@/view/TVPlay.vue'),
+            path: '/iqiyi',
+            name: 'iqiyi',
+            redirect: '/iqiyi/tv-play',
+            component: () => import('@/views/NavView.vue'),
             meta: {
-                keepAlive: true
-            }
+                keepAlive: true,
+                title: "爱奇艺"
+            },
+            children: [
+                {
+                    path: 'tv-play',
+                    name: 'IqiyiTVPlay',
+                    component: () => import('@/views/iqiyi/TVPlay.vue'),
+                },
+                {
+                    path: 'movie',
+                    name: 'IqiyiMovie',
+                    component: () => import('@/views/iqiyi/TheMovie.vue'),
+                },
+                {
+                    path: 'animation',
+                    name: 'IqiyiAnimation',
+                    component: () => import('@/views/iqiyi/TheAnimation.vue'),
+                },
+            ]
         },
         {
-            path: '/movie',
-            name: 'Movie',
-            component: () => import('@/view/TheMovie.vue'),
+            path: '/tencent',
+            name: 'tencent',
+            redirect: '/tencent/tv-play',
+            component: () => import('@/views/NavView.vue'),
             meta: {
-                keepAlive: true
-            }
+                keepAlive: true,
+                title: "腾讯视频"
+            },
+            children: [
+                {
+                    path: 'tv-play',
+                    name: 'TencentTVPlay',
+                    component: () => import('@/views/tencent/TVPlay.vue'),
+                },
+                {
+                    path: 'movie',
+                    name: 'TencentMovie',
+                    component: () => import('@/views/tencent/TheMovie.vue'),
+                },
+                {
+                    path: 'animation',
+                    name: 'TencentAnimation',
+                    component: () => import('@/views/tencent/TheAnimation.vue'),
+                },
+            ]
         },
         {
-            path: '/animation',
-            name: 'Animation',
-            component: () => import('@/view/TheAnimation.vue'),
+            path: '/bilibili',
+            name: 'bilibili',
+            redirect: '/bilibili/tv-play',
+            component: () => import('@/views/NavView.vue'),
             meta: {
-                keepAlive: true
-            }
+                keepAlive: true,
+                title: "哔哩哔哩"
+            },
+            children: [
+                {
+                    path: 'tv-play',
+                    name: 'BilibiliTVPlay',
+                    component: () => import('@/views/bilibili/TVPlay.vue'),
+                },
+                {
+                    path: 'movie',
+                    name: 'BilibiliMovie',
+                    component: () => import('@/views/bilibili/TheMovie.vue'),
+                },
+                {
+                    path: 'animation',
+                    name: 'BilibiliAnimation',
+                    component: () => import('@/views/bilibili/TheAnimation.vue'),
+                },
+            ]
         },
         {
-            path: '/play',
-            name: 'play',
-            component: () => import('@/view/PlayView.vue'),
-            meta: {
-                keepAlive: true
-            }
+            path: '/',
+            component: () => import('@/views/NavView.vue'),
+            children: [
+                {
+                    path: '/play',
+                    name: 'play',
+                    component: () => import('@/views/PlayView.vue'),
+                    meta: {
+                        keepAlive: true
+                    },
+                }
+            ]
         },
     ]
 })

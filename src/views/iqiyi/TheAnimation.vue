@@ -42,6 +42,7 @@
                             <el-image
                                 :src="item.imageUrl || item.albumInfo?.img"
                                 referrerpolicy="no-referrer"
+                                lazy
                             />
                             <i></i>
                         </div>
@@ -176,7 +177,7 @@ const getList = (key: string, pageNum: number) => {
                     data.list = data.list.concat(res.data.templates)
                 } else {
                     ElMessage.error({
-                        message: "已经到底，没有数据了！",
+                        message: '已经到底，没有数据了！',
                         offset: 100,
                     })
                 }
@@ -211,7 +212,7 @@ const handleToPlay = (item: any) => {
     const params = JSON.stringify(item)
     router.push({
         name: 'play',
-        state: { params: params },
+        state: { params: params, type: 'iqiyi' },
     })
 }
 </script>
