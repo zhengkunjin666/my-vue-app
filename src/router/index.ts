@@ -6,10 +6,10 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/iqiyi',
+            redirect: '/iqiyi-tv-play',
         },
         {
-            path: '/iqiyi/tv-play',
+            path: '/iqiyi-tv-play',
             name: 'IqiyiTVPlay',
             component: () => import('@/views/iqiyi/TVPlay.vue'),
             meta: {
@@ -18,7 +18,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/iqiyi/movie',
+            path: '/iqiyi-movie',
             name: 'IqiyiMovie',
             component: () => import('@/views/iqiyi/TheMovie.vue'),
             meta: {
@@ -27,7 +27,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/iqiyi/animation',
+            path: '/iqiyi-animation',
             name: 'IqiyiAnimation',
             component: () => import('@/views/iqiyi/TheAnimation.vue'),
             meta: {
@@ -36,7 +36,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/tencent/tv-play',
+            path: '/tencent-tv-play',
             name: 'TencentTVPlay',
             component: () => import('@/views/tencent/TVPlay.vue'),
             meta: {
@@ -45,7 +45,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/tencent/movie',
+            path: '/tencent-movie',
             name: 'TencentMovie',
             component: () => import('@/views/tencent/TheMovie.vue'),
             meta: {
@@ -54,7 +54,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/tencent/animation',
+            path: '/tencent-animation',
             name: 'TencentAnimation',
             component: () => import('@/views/tencent/TheAnimation.vue'),
             meta: {
@@ -63,7 +63,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/bilibili/tv-play',
+            path: '/bilibili-tv-play',
             name: 'BilibiliTVPlay',
             component: () => import('@/views/bilibili/TVPlay.vue'),
             meta: {
@@ -72,7 +72,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/bilibili/movie',
+            path: '/bilibili-movie',
             name: 'BilibiliMovie',
             component: () => import('@/views/bilibili/TheMovie.vue'),
             meta: {
@@ -81,7 +81,7 @@ const router = createRouter({
             },
         },
         {
-            path: '/bilibili/animation',
+            path: '/bilibili-animation',
             name: 'BilibiliAnimation',
             component: () => import('@/views/bilibili/TheAnimation.vue'),
             meta: {

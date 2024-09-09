@@ -81,11 +81,12 @@ const types = ref([
 watch(
     () => router.currentRoute.value.path,
     (toPath) => {
-        const pathArr = toPath.split('/').filter((item) => item)
+        const path = toPath.replace('/', '')
+        const pathArr = path.split('-', 3)
         type.value = pathArr[0]
-        radio1.value = pathArr[1]
+        radio1.value = pathArr[2] ? pathArr[1] + '-' + pathArr[2] : pathArr[1]
         document.title = route.meta.title as any
-        console.log(toPath, toPath !== '/play', type.value)
+        console.log(toPath, toPath !== '/play', type.value, radio1.value)
         if (toPath !== '/play') {
             document.getElementsByTagName('link')[0].remove()
             const linkzh = document.createElement('link')
@@ -99,7 +100,7 @@ watch(
 )
 const handleTo = () => {
     router.replace({
-        path: `/${type.value}/${radio1.value}`,
+        path: `/${type.value}-${radio1.value}`,
     })
 }
 </script>
