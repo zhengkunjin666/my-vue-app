@@ -47,11 +47,9 @@
                             <i></i>
                         </div>
                         <div class="z-m-t-10 z-m-b-20">
-                            <span
-                                class="z-line-1"
-                                :title="item.params.title"
-                                >{{ item.params.title }}</span
-                            >
+                            <span class="z-line-1" :title="item.params.title">{{
+                                item.params.title
+                            }}</span>
                         </div>
                     </div>
                 </div>
@@ -238,8 +236,9 @@ const handleScrollTop = () => {
     }
 }
 const router = useRouter()
+const { proxy } = getCurrentInstance() as any
 const handleToPlay = (item: any) => {
-    const url = `/x/api/float_vinfo2?cid=${item.params.cid}`
+    const url = `${proxy.proxyX}/x/api/float_vinfo2?cid=${item.params.cid}`
     fetch(url)
         .then((response) => response.json())
         .then((res) => {
