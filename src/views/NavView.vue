@@ -85,8 +85,9 @@ watch(
         document.title = route.meta.title as any
         console.log(toPath, toPath !== '/play', type.value)
         if (toPath !== '/play') {
-            document.getElementsByTagName('link')[0].remove()
+            document.getElementById('link-svg')?.remove()
             const linkzh = document.createElement('link')
+            linkzh.setAttribute('id', 'link-svg')
             linkzh.setAttribute('type', 'image/svg+xml')
             linkzh.setAttribute('rel', 'icon')
             linkzh.setAttribute('href', '/' + type.value + '.svg')
