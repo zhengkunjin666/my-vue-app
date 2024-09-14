@@ -237,13 +237,13 @@ const handleScrollTop = () => {
     }
 }
 const router = useRouter()
+const { proxy } = getCurrentInstance() as any
 const handleToPlay = (item: any) => {
-    const url = `/x/api/float_vinfo2?cid=${item.params.cid}`
-    fetch(url)
-        .then((response) => response.json())
-        .then((res) => {
-            console.log('Success:', res)
-            const vid = res.c.video_ids[0]
+    const url = `https://node.video.qq.com/x/api/float_vinfo2?cid=${item.params.cid}`
+    proxy
+        .$jsonp(url)
+        .then((response: any) => {
+            const vid = response.c.video_ids[0]
             const param = {
                 title: item.params.title,
                 playUrl: `https://v.qq.com/x/cover/${item.params.cid}/${vid}.html`,
@@ -254,7 +254,7 @@ const handleToPlay = (item: any) => {
                 state: { params: params, type: 'tencent' },
             })
         })
-        .catch((error) => {
+        .catch((error: any) => {
             console.error('Error:', error)
             ElMessage.error({
                 message: error,

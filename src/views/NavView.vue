@@ -56,6 +56,8 @@
 </template>
 
 <script lang="ts" setup>
+import iqiyi from "@/assets/icons/svg/iqiyi.svg"
+import tencent from "@/assets/icons/svg/tencent.svg"
 const router = useRouter()
 const route = useRoute()
 const radio1 = ref('tv-play')
@@ -90,7 +92,7 @@ watch(
             linkzh.setAttribute('id', 'link-svg')
             linkzh.setAttribute('type', 'image/svg+xml')
             linkzh.setAttribute('rel', 'icon')
-            linkzh.setAttribute('href', '/' + type.value + '.svg')
+            linkzh.setAttribute('href', tencent)
             document.head.appendChild(linkzh)
         }
     },
