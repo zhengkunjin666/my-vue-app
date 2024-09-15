@@ -114,6 +114,7 @@ const handleTo = () => {
 }
 </script>
 <style lang="scss">
+@import "./style.scss";
 .to-top {
     font-size: 30px;
     font-weight: bold;
