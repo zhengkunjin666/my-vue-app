@@ -59,8 +59,8 @@
 </template>
 
 <script lang="ts" setup>
-import iqiyi from "@/assets/icons/svg/iqiyi.svg"
-import tencent from "@/assets/icons/svg/tencent.svg"
+import iqiyi from '@/assets/icons/svg/iqiyi.svg'
+import tencent from '@/assets/icons/svg/tencent.svg'
 // import bilibili from "@/assets/icons/svg/bilibili.svg"
 const router = useRouter()
 const route = useRoute()
@@ -71,12 +71,12 @@ const types = ref([
     {
         value: 'iqiyi',
         label: '爱奇艺',
-        svg: iqiyi
+        svg: iqiyi,
     },
     {
         value: 'tencent',
         label: '腾讯视频',
-        svg: tencent
+        svg: tencent,
     },
     // {
     //     value: 'bilibili',
@@ -94,7 +94,9 @@ watch(
         document.title = route.meta.title as any
         console.log(toPath, toPath !== '/play', type.value, radio1.value)
         if (toPath !== '/play') {
-            const svg = types.value.filter(item => item.value === type.value)[0]?.svg
+            const svg = types.value.filter(
+                (item) => item.value === type.value
+            )[0]?.svg
             document.getElementById('link-svg')?.remove()
             const linkzh = document.createElement('link')
             linkzh.setAttribute('id', 'link-svg')
@@ -114,6 +116,7 @@ const handleTo = () => {
 }
 </script>
 <style lang="scss">
+@import "./style";
 .to-top {
     font-size: 30px;
     font-weight: bold;
