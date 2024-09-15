@@ -61,7 +61,7 @@
 <script lang="ts" setup>
 import iqiyi from "@/assets/icons/svg/iqiyi.svg"
 import tencent from "@/assets/icons/svg/tencent.svg"
-import bilibili from "@/assets/icons/svg/bilibili.svg"
+// import bilibili from "@/assets/icons/svg/bilibili.svg"
 const router = useRouter()
 const route = useRoute()
 const radio1 = ref('tv-play')
@@ -78,11 +78,11 @@ const types = ref([
         label: '腾讯视频',
         svg: tencent
     },
-    {
-        value: 'bilibili',
-        label: '哔哩哔哩',
-        svg: bilibili
-    },
+    // {
+    //     value: 'bilibili',
+    //     label: '哔哩哔哩',
+    //     svg: bilibili
+    // },
 ])
 watch(
     () => router.currentRoute.value.path,
