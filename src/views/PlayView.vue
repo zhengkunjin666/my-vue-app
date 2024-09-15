@@ -83,7 +83,7 @@ const setData = () => {
 </script>
 
 <style scoped lang="scss">
-@import ".././style.scss";
+@import "@/style.scss";
 .iframe-box {
     width: 100vw;
     height: 100vh;
