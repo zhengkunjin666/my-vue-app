@@ -79,11 +79,11 @@ const types = ref([
         label: '腾讯视频',
         svg: tencent,
     },
-    {
-        value: 'bilibili',
-        label: '哔哩哔哩',
-        svg: bilibili
-    },
+    // {
+    //     value: 'bilibili',
+    //     label: '哔哩哔哩',
+    //     svg: bilibili
+    // },
 ])
 watch(
     () => router.currentRoute.value.path,
