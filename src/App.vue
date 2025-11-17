@@ -35,6 +35,7 @@
             </el-select>
         </div>
         <el-radio-group v-model="radio1" size="large" @change="handleTo">
+            <el-radio-button label="综艺" value="variety" />
             <el-radio-button label="电视剧" value="tv-play" />
             <el-radio-button label="电影" value="movie" />
             <el-radio-button label="动漫" value="animation" />
@@ -61,10 +62,10 @@
 <script lang="ts" setup>
 import iqiyi from '@/assets/icons/svg/iqiyi.svg'
 import tencent from '@/assets/icons/svg/tencent.svg'
-// import bilibili from "@/assets/icons/svg/bilibili.svg"
+import bilibili from "@/assets/icons/svg/bilibili.svg"
 const router = useRouter()
 const route = useRoute()
-const radio1 = ref('tv-play')
+const radio1 = ref('variety')
 const visible = ref(false)
 const type = ref('iqiyi')
 const types = ref([
@@ -78,11 +79,11 @@ const types = ref([
         label: '腾讯视频',
         svg: tencent,
     },
-    // {
-    //     value: 'bilibili',
-    //     label: '哔哩哔哩',
-    //     svg: bilibili
-    // },
+    {
+        value: 'bilibili',
+        label: '哔哩哔哩',
+        svg: bilibili
+    },
 ])
 watch(
     () => router.currentRoute.value.path,
@@ -114,6 +115,66 @@ const handleTo = () => {
         path: `/${type.value}-${radio1.value}`,
     })
 }
+onMounted(() => { 
+    fetch('/page/searchOne/id/d58ef062578604a3.html', {
+            referrer: '',
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({keyword: 5644654}), // body data type must match "Content-Type" header
+    })
+        .then((response) => {
+            console.log(response)
+            return response.json()
+        })
+        .then((res) => {
+            console.log('Success:', res)
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+        })
+
+        const params = {
+             iid: '9c383804755b9d31',
+      verify: undefined,
+      userAgent: 'Mozilla/5.0 (Linux; Android 14; 23127PN0CC Build/UKQ1.230804.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 XWEB/1160065 MMWEBSDK/20231202 MicroMessenger/8.0.47.2560(0x28002F51) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64',
+      appCodeName: 'Mozilla',
+      appName: 'Netscape',
+      appVersion: '5.0 (Linux; Android 14; 23127PN0CC Build/UKQ1.230804.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36',
+      cookieEnabled: true,
+      language:  'zh-CN',
+      platform: 'Linux armv8l',
+      js_lib_ver: 1.01,
+      hx: null,
+      token: "",
+      magic: "",
+        }
+        
+    fetch('/page/votedsf/id/d58ef062578604a3/v/2.html', {
+        referrer: '',
+    //   mode: 'cors',
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params), // body data type must match "Content-Type" header
+    })
+        .then(async (response) => {
+            console.log(response)
+            if (response.headers.get('Content-Type') !== 'application/json') { 
+                console.log(await response.text()); 
+            }
+            return response.json()
+        })
+        .then((res) => {
+            console.log('Success:', res)
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+        })
+
+})
 </script>
 <style lang="scss">
 .to-top {

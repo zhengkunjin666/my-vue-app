@@ -7,7 +7,16 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            redirect: '/iqiyi-tv-play',
+            redirect: '/tencent-variety',
+        },
+        {
+            path: '/iqiyi-variety',
+            name: 'IqiyiVariety',
+            component: () => import('@/views/iqiyi/TheVariety.vue'),
+            meta: {
+                keepAlive: true,
+                title: "爱奇艺"
+            },
         },
         {
             path: '/iqiyi-tv-play',
@@ -37,6 +46,15 @@ const router = createRouter({
             },
         },
         {
+            path: '/tencent-variety',
+            name: 'TencentVariety',
+            component: () => import('@/views/tencent/TheVariety.vue'),
+            meta: {
+                keepAlive: true,
+                title: "腾讯视频"
+            },
+        },
+        {
             path: '/tencent-tv-play',
             name: 'TencentTVPlay',
             component: () => import('@/views/tencent/TVPlay.vue'),
@@ -61,6 +79,15 @@ const router = createRouter({
             meta: {
                 keepAlive: true,
                 title: "腾讯视频"
+            },
+        },
+        {
+            path: '/bilibili-variety',
+            name: 'BilibiliVariety',
+            component: () => import('@/views/bilibili/TheVariety.vue'),
+            meta: {
+                keepAlive: true,
+                title: "哔哩哔哩"
             },
         },
         {

@@ -59,6 +59,13 @@ export default defineConfig(({ mode, command }) => {
                     pathRewrite: {                  //路径重置
                         '^/search': '/search'
                     }
+                },
+                '/page': {
+                    target: 'https://m82459726f22f63a9.wxvote.pingxuan123.com/', //接口域名
+                    changeOrigin: true,             //是否跨域
+                    pathRewrite: {                  //路径重置
+                        '^/page': '/page'
+                    }
                 }
             }
         }
