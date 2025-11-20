@@ -105,9 +105,15 @@ const load = () => {
     }
 }
 const getData = () => {
-    const url = `/pgc/season/index/result?area=-1&style_id=-1&release_date=-1&season_status=-1&order=0&st=5&sort=0&page=${data.pageNum}&season_type=5&pagesize=${data.pageSize}&type=1`
+    // const url = `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(`https://api.bilibili.com/pgc/season/index/result?area=-1&style_id=-1&release_date=-1&season_status=-1&order=0&st=5&sort=0&page=${data.pageNum}&season_type=5&pagesize=${data.pageSize}&type=1`)}`
+    const url = `https://my-first-worker.zhengkunjin.workers.dev?url=${encodeURIComponent(`https://api.bilibili.com/pgc/season/index/result?area=-1&style_id=-1&release_date=-1&season_status=-1&order=0&st=5&sort=0&page=${data.pageNum}&season_type=5&pagesize=${data.pageSize}&type=1`)}`
     fetch(url)
-        .then((response) => response.json())
+        .then(async (response) => {
+            if (response.headers.get('Content-Type') !== 'application/json') { 
+                console.log(await response.text()); 
+            }
+            return response.json()
+        })
         .then((res) => {
             console.log('Success:', res)
             if (data.pageNum === 1) {
@@ -132,7 +138,8 @@ const getList = (key: string, pageNum: number) => {
     }
     if (key) {
         // 搜索网址
-        const url = `/search/all?spm_id_from=333.976.0.0&keyword=${key}&search_type=&page=${data.pageNum}&page_size=${data.pageSize}`
+        // const url = `/search/all?spm_id_from=333.976.0.0&keyword=${key}&search_type=&page=${data.pageNum}&page_size=${data.pageSize}`
+        const url = `https://my-first-worker.zhengkunjin.workers.dev?url=${encodeURIComponent(`https://api.bilibili.com/x/web-interface/search/all?spm_id_from=333.976.0.0&keyword=${key}&search_type=&page=${data.pageNum}&page_size=${data.pageSize}`)}`
         fetch(url, {
             referrer: '',
         })
