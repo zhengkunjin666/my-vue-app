@@ -60,6 +60,13 @@ export default defineConfig(({ mode, command }) => {
                         '^/search': '/search'
                     }
                 },
+                '/trpc.videosearch.mobile_search.MultiTerminalSearch': {
+                    target: 'https://pbaccess.video.qq.com/', //接口域名
+                    changeOrigin: true,             //是否跨域
+                    pathRewrite: {                  //路径重置
+                        '^/trpc.videosearch.mobile_search.MultiTerminalSearch': '/trpc.videosearch.mobile_search.MultiTerminalSearch'
+                    }
+                },
             }
         }
     }

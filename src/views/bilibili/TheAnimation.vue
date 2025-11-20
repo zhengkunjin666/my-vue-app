@@ -105,7 +105,8 @@ const load = () => {
     }
 }
 const getData = () => {
-    const url = `/pgc/season/index/result?st=4&order=0&season_version=-1&is_finish=-1&copyright=-1&season_status=-1&year=-1&style_id=-1&sort=0&page=${data.pageNum}&season_type=4&page_size=${data.pageSize}&type=1`
+    // const url = `/pgc/season/index/result?st=4&order=0&season_version=-1&is_finish=-1&copyright=-1&season_status=-1&year=-1&style_id=-1&sort=0&page=${data.pageNum}&season_type=4&page_size=${data.pageSize}&type=1`
+    const url = `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(`https://api.bilibili.com/pgc/season/index/result?st=4&order=0&season_version=-1&is_finish=-1&copyright=-1&season_status=-1&year=-1&style_id=-1&sort=0&page=${data.pageNum}&season_type=4&page_size=${data.pageSize}&type=1`)}`
     fetch(url)
         .then((response) => response.json())
         .then((res) => {
@@ -132,7 +133,8 @@ const getList = (key: string, pageNum: number) => {
     }
     if (key) {
         // 搜索网址
-        const url = `/search/all?spm_id_from=333.976.0.0&keyword=${key}&search_type=&page=${data.pageNum}&page_size=${data.pageSize}`
+        // const url = `/search/all?spm_id_from=333.976.0.0&keyword=${key}&search_type=&page=${data.pageNum}&page_size=${data.pageSize}`
+        const url = `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(`https://api.bilibili.com/x/web-interface/search/all?spm_id_from=333.976.0.0&keyword=${key}&search_type=&page=${data.pageNum}&page_size=${data.pageSize}`)}`
         fetch(url, {
             referrer: '',
         })
